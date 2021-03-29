@@ -1,3 +1,3 @@
 # movies-app
 
-React app, search funmction using APIs.
+React app, search function using APIs.

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
 import Search from './Components/Search';
-import Results from './Components/Results'
-import Popup from './Components/Popup';
-import { Watched } from './Components/Watched';
-import {HashRouter as Route } from 'react-router-dom'
+import Results from './Components/Results';
+
 
 function App() {
   const [state, setState] = useState({
@@ -35,35 +33,13 @@ function App() {
     });
   }
 
-  const openPopup = (id) => {
-    fetch(apiurl + id)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        let result = data;
-
-        setState(prevState => {
-          return { ...prevState, selected: result }
-        });
-      });
-  }
-
-  const closePopup = () => {
-    setState(prevState => {
-      return { ...prevState, selected: {} }
-    });
-  }
-
 
   return (
     <div className="App">
       <div className='movie-container'>
         <Navbar />
         <Search handleInput={handleInput} search={search} />
-        <Results results={state.results} openPopup={openPopup}/>
-        {(typeof state.selected.Title != 'undefined') ? 
-        <Popup selected={state.selected} closePopup={closePopup} /> : false}
-        <Route path='Watched' component={Watched} />
+        <Results results={state.results} />
       </div>
     </div>
   );

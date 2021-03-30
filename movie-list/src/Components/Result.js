@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Result ({ result, openPopup }) {
+function Result ({ result }) {
   return (
-    <div className='result' onClick={() => openPopup(result.id)}>
+    <div className='result'>
       <img src={result.poster_path} alt={result.title} />
       <h3>{result.title}</h3>
       <h5>{result.release_date}</h5>
